@@ -4,6 +4,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var accessibilityButtonFrame = CGRect.zero
     @State private var screenRecordingButtonFrame = CGRect.zero
+    @State private var fullDiskAccessButtonFrame = CGRect.zero
 
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -42,6 +43,18 @@ struct ContentView: View {
                 .buttonStyle(.glass)
                 .controlSize(.large)
                 .background(ScreenFrameReader(frameInScreen: $screenRecordingButtonFrame))
+
+                Button {
+                    PermisoAssistant.shared.present(
+                        panel: .fullDiskAccess,
+                        sourceFrameInScreen: fullDiskAccessButtonFrame
+                    )
+                } label: {
+                    Label("Full Disk Access", systemImage: "externaldrive.badge.checkmark")
+                }
+                .buttonStyle(.glass)
+                .controlSize(.large)
+                .background(ScreenFrameReader(frameInScreen: $fullDiskAccessButtonFrame))
             }
 
             Spacer()

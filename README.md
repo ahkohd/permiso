@@ -12,4 +12,8 @@ import Permiso
 func showAccessibilityHelper() {
     PermisoAssistant.shared.present(panel: .accessibility)
 }
+
+func showFullDiskAccessHelper() {
+    PermisoAssistant.shared.present(panel: .fullDiskAccess)
+}
 ```

@@ -25,7 +25,9 @@ public final class PermisoAssistant {
         overlayController = OverlayWindowController(hostApp: hostApp, panel: panel) { [weak self] in
             self?.dismiss()
         }
-        NSWorkspace.shared.open(panel.settingsURL)
+        for url in panel.settingsURLs where NSWorkspace.shared.open(url) {
+            break
+        }
         startTracking()
     }
 
